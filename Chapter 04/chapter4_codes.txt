@@ -1,0 +1,313 @@
+Example: class declaration
+class Student {  
+   // field 
+   String name = "Mickel";  
+   
+   // function 
+   void show() { 
+      print(name); 
+   } }
+
+
+Consider the following example that depicts how to access the attributes and functions in Dart.
+void main() { 
+   Student s= new Student(); 
+   s.show(); }  
+class Student {  
+   // field 
+   String name = "Mickel";  
+   
+   // function 
+   void show() { 
+      print(name); 
+   } }
+The output of the above code is as follows −
+Mickel
+
+
+
+Example
+The following example depicts the use of constructors in Dart −
+
+void main()
+ { 
+   Student s = new Student('Mickel'); 
+} 
+class Student 
+{ 
+   Student(String name) 
+{ 
+      print(name); 
+   } 
+}
+The above code should give the following output −
+Mickel 
+
+
+The following example depicts the use of named constructors in Dart −
+void main()
+ {           
+   Student s1 = new Student.namedConst('Mickel');                                       
+   Student s2 = new Student(); 
+}           
+class Student
+ {                   
+   Student() {                           
+      print("Non-parameterized constructor is invoked");
+   }                                   
+   Student.namedConst(String name)
+ { 
+      print("The name is : ${name}");    
+   }                               }
+The following output is produced −
+The name is : Mickel
+Non-parameterized constructor invoked
+
+
+
+void main()
+ { 
+   Studenr s1 = new Student('Mickel'); 
+}  
+class Student 
+{ 
+   String name; 
+   Student(String name) 
+{ 
+      this.name = name; 
+      print("The name is : ${name}"); 
+   }
+ } 
+The following output is produced from above code −
+The name is : Mickel
+
+The following example depicts the use of getters and setters in a Dart class −
+
+class Student { 
+   String name; 
+   int age; 
+    
+   String get studentname { 
+      return name; 
+   } 
+    
+   void set studentname(String name) { 
+      this.name = name; 
+   } 
+   
+   void set studentage(int age) { 
+      if(age<= 2) { 
+        print("Age must be greater than 3"); 
+      }  else { 
+         this.age = age; 
+      } 
+   } 
+   
+   int get studentage { 
+      return age;     
+   } }  
+void main() { 
+  Student s1 = new Student(); 
+   s1.studentname = 'Mickel'; 
+   s1.studentage = 1; 
+   print(s1.studentname); 
+   print(s1.studentage); } 
+This program code should produce the following output −
+Mickel
+Age should be greater than 3 
+
+
+In the following example, we have declared a class Vehicle. The class is extended by the Car class. There exists inheritance relation between parent class or super class and child class or derived class or sub class. The derived class or child class attains implit access to data members of the parent class. 
+
+void main() { 
+   var obj = new Car(); 
+   obj.printvehiclename(); }  class Vehicle { 
+   void printvehiclename() { 
+      print("Calling printvehiclename defined in the Vehicle class"); 
+   } }  class Car extends Vehicle {}
+The following output is generated from the above code −
+Calling printvehiclename defined in the Vehicle class
+
+
+The following example depicts multi-level inheritance −
+
+void main() { 
+   var obj = new Child(); 
+   obj.str = "hello"; 
+   print(obj.str); } 
+ class Grandparent 
+{ 
+   String str; 
+}  
+class Parent extends Grandparent{}  
+class Child extends Parent {}  //The Child class indirectly inherits from Grandparent class
+
+The output of above code is as follows −
+hello
+
+
+The following example depicts Method Overriding in Dart Programming:
+
+void main() 
+{ 
+   Student s = new Student(); 
+   s.m(27); 
+} 
+class Teacher { 
+   void m(int x)
+{ print("value of x is ${x}");}
+ } 
+ class Student extends Teacher { 
+   //Method Overridding
+   void m(int y) { 
+      print("value of y is ${y}"); 
+   } }
+The output of above code is −
+value of y is 27
+
+
+The following example depicts the use of static keyword:
+class A 
+{ 
+   static int num;  
+   static display() 
+{ 
+      print("The value of num is ${A.num}")  ; 
+   } 
+} 
+ void main() { 
+  A.num = 27;  
+   // initializing the static variable } 
+   A.display();   
+   // invoking the static method }
+The following output  is obtained−
+The value of num is 27
+
+
+The following example depicts the use of super keyword:
+void main() 
+{ 
+   Student s = new Student(); 
+   s.m1(27); 
+} 
+class Teacher 
+{ 
+      void m1(int y)
+{ 
+print("value of y is ${y}");
+} 
+} 
+class Student extends Teacher { 
+   @Method override 
+   void m1(int x) { 
+      print("value of x is ${x}"); 
+      super.m1(10); 
+      } }
+It should produce the following output −
+value of x is 27
+value of y is 10 
+
+
+Consider the following example of importing a library function:
+import 'dart:math';   // Importing built-in library  
+void main() {   
+   print("Square root of 49 is: ${sqrt(49)}");   
+}  
+Output:
+Square root of 49 is: 7.0
+
+
+
+
+Dart Libraries
+In Dart, the library comprises of set of programming instructions or collection of routine. Dart has many built-in libraries that consists of routines such as functions, set of classes, etc. A Dart library consists of functions, constants, exceptions, properties, typedefs, and classes.
+
+Importing a library
+In Dart, we can use the library in a  file by using an 'import' keyword. Using the import keyword, the library can be made available in the current working file. In a single file, multiple libraries can be used. The package manager pub provides the list of libraries and packages that can be used in the current program.
+Some of the commonly known libraries are listed below:
+1. dart:io- This library comprises of HTTP, File, socket and I/O support that can be used for server applications. This library cannot be used for browser based applications. We don't require to import this library since it is already imported by default.
+2. dart:core- This library comprises of various built-in types as well as various core functionalities. We need not import this library as it is imported by default.
+We are describing some commonly used libraries below.
+3. dart:math- This library comprises of mathematical constant, functions, random number generator etc.
+4. dart:convert- It is used as encoder or decoder for conversion of various data representations such as JSON, UTF etc.
+5. dart:typed_data-It is used to represent the list that can store fixed size data efficiently.
+
+Consider the following example of importing a library function:
+import 'dart:math';   // Importing built-in library  
+void main() {   
+   print("Square root of 49 is: ${sqrt(49)}");   
+}  
+Output:
+Square root of 49 is: 7.0
+Explanation:
+In the above code, the built-in library imported is: 'dart:math'. Using this library, we can use many mathematical functions. In this program, we have used sqrt() function with number. sqrt() function is used to square root of a number.
+
+Name Alias of Library
+In Dart, if multiple libraries are imported together in program and if these libraries use the same function name; then it may result in a conflict. Dart allows us to import multiple libraries into the current working file, but if we create the same function name within the different libraries, then it will result in conflict while accessing these functions. To overcome this scenario, Dart uses as keyword acting as prefix. The syntax is given below.
+Syntax:
+
+import 'libraryname' as prefix  
+Consider the following example -
+// We are defining a library: happy.dart
+
+library happy;    
+void hi(msg){   
+   print("Say hi ${msg}");  
+}  
+//Next, we are defining library: joy.dart
+
+library joy;   
+void hi(msg){   
+   print("Say hello ${msg}");   
+}  
+// We can import the library with the as prefix.
+
+import 'happy.dart';   
+import 'joy.dart' as jolly;    
+  
+//  as prefix prevents function name clashes   
+void main(){   
+  hi("Mickel");   
+   jolly.hi("James");   // To eliminate the name conflict  
+}  
+Output:
+Say hi Mickel
+Say hello James
+
+
+Consider the following example that is based on synchronous programming:
+ 
+import 'dart:io'; 
+void main() 
+{ 
+  print("Please enter your name :");            
+   // Read name from user input 
+   String name = stdin.readLineSync();  
+   
+   // User’s name is read
+   print("Hello ${name}"); 
+   print("End void main"); 
+} 
+
+In the above code, readLineSync() is a synchronous method. This function readLineSync() is used to block the execution of main application until it accepts the input from the user.
+The output of the above code is as follows:
+Enter your name :     
+Mickel // Accepts input from user                   
+Hello Mickel
+End void main
+
+
+import "dart:async"; import "dart:io";  
+void main(){ 
+   File file = new File( Directory.current.path+"\\data\\asyndata.txt"); 
+   Future<String> f = file.readAsString();  
+     f.then((data)=>print(data));  
+//Reading from the file doesn’t block execution of main application
+   print("End of void main");  
+   
+The output of the above code is as follows −
+End of void main 
+1.Mickel
+2. John 
+3. Jack 
+4. Sue

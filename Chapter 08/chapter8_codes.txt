@@ -1,0 +1,59 @@
+To indicate that your plugin is a Flutter plugin, you will need to annotate the main class with the @plugin annotation. For example:
+import 'package:flutter/widgets.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_camera_plugin/flutter_camera_plugin.dart';
+
+class FlutterCameraPlugin {
+  static const MethodChannel _channel =
+      const MethodChannel('flutter_camera_plugin');
+
+  static Future<String> get platformVersion async {
+    final String version = await _channel.invokeMethod('getPlatformVersion');
+    return version;
+  }
+}
+
+class Camera {
+  final MethodChannel _channel;
+
+  Camera(this._channel);
+
+  Future<void> takePicture() async {
+    await _channel.invokeMethod('takePicture');
+  }
+
+  Future<void> startRecording
+
+Here is an example of how you might test a Flutter plugin in a Flutter app:
+import 'package:flutter/material.dart';
+import 'package:flutter_camera_plugin/flutter_camera_plugin.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String _platformVersion = 'Unknown';
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  // Initialize the plugin's platform state
+  Future<void> initPlatformState() async {
+    String platformVersion;
+    try {
+      platformVersion = await FlutterCameraPlugin.platformVersion;
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
+
+    // If the widget was removed from
+

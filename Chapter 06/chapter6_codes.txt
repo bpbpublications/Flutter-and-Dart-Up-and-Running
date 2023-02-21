@@ -1,0 +1,264 @@
+The following code makes use of AnimatedAlign widget:
+
+import 'package:flutter/material.dart';
+void main() => runApp(const NewApp());
+class NewApp extends StatelessWidget {
+  const NewApp({super.key});
+
+  static const String _title = 'Welcome to Flutter';
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: _title,
+      home: Scaffold(
+        appBar: AppBar(title: const Text(_title)),
+        body: const NewStatefulWidget(),
+      ),); }}
+class NewStatefulWidget extends StatefulWidget {
+  const NewStatefulWidget({super.key});
+  @override
+  State<NewStatefulWidget> createState() => _NewStatefulWidgetState();
+}
+class _NewStatefulWidgetState extends State<NewStatefulWidget> {
+  bool selected = false;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selected = !selected;
+        });},
+      child: Center(
+        child: Container(width: 325.0,height: 325.0,color: Colors.blue,
+          child: AnimatedAlign(alignment: selected ? Alignment.topLeft : Alignment.bottomRight,
+            duration: const Duration(seconds: 3),curve: Curves.fastOutSlowIn,child: const FlutterLogo(size: 75.0),
+          ),),),
+    );
+  }}
+
+
+
+Using this pre-built child is entirely optional, but can improve performance significantly in some cases and is therefore a good practice.
+
+import 'dart:math' as math;
+import 'package:flutter/material.dart';
+void main() => runApp(const MyApp());
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  static const String _title = 'Welcome to Flutter';
+@override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: _title,
+      home: MyStatefulWidget(),
+    );
+  }
+}
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({super.key});
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+class _MyStatefulWidgetState extends State<MyStatefulWidget>
+    with TickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(seconds: 15),
+    vsync: this,
+  )..repeat();
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      child: Container(
+        width: 300.0,
+        height: 300.0,
+        color: Colors.orange,
+        child: const Center(
+          child: Text('Congrats!'),
+        ),
+      ),
+      builder: (BuildContext context, Widget? child) {
+        return Transform.rotate(angle: _controller.value * 2.0 * math.pi,child: child,);
+      },); }
+}
+
+
+
+import 'package:flutter/material.dart';
+class NewApp extends StatelessWidget {
+  const NewApp({super.key, required this.counterValueNotifier});
+
+  final ValueNotifier<int> counterValueNotifier;
+  @override
+  Widget build(BuildContext context) {return Center(child: Column(mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const Text(‘Value of Counter:'),
+          AnimatedBuilder(animation: counterValueNotifier,builder: (BuildContext context, Widget? child) {
+              return Text('${counterValueNotifier.value}');
+            },),],),);}}
+
+class ThisApp extends StatefulWidget {
+  const ThisApp({super.key});
+  @override
+  State<ThisApp> createState() => _ThisAppState();
+}
+class _ThisAppState extends State<ThisApp> {
+  final ValueNotifier<int> _counter = ValueNotifier<int>(0);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(appBar: AppBar(title: const Text('AnimatedBuilder example')),
+        body: CounterBody(counterValueNotifier: _counter),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => _counter.value++,
+          child: const Icon(Icons.add),
+        ),),);
+  }}
+void main() {
+  runApp(const ThisApp());
+}
+
+Consider the following code base on AnimatedContainer Widget:
+import 'package:flutter/material.dart';
+void main() => runApp(const NewApp());
+class NewApp extends StatelessWidget {
+  const NewApp({super.key});
+  static const String _title = 'Flutter Code Sample';
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: _title,
+      home: Scaffold(
+        appBar: AppBar(title: const Text(_title)),
+        body: const NewStatefulWidget(),
+      ),);  }}
+class NewStatefulWidget extends StatefulWidget {
+  const NewStatefulWidget({super.key});
+  @override
+  State<NewStatefulWidget> createState() => _NewStatefulWidgetState();
+}
+class _NewStatefulWidgetState extends State<NewStatefulWidget> {
+  bool selected = false;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selected = !selected;
+        });
+      },
+      child: Center(
+        child: AnimatedContainer(width: selected ? 300.0 : 200.0,height: selected ? 300.0 : 200.0,
+          color: selected ? Colors.red : Colors.blue,alignment:selected ? Alignment.center : AlignmentDirectional.topCenter,  duration: const Duration(seconds: 2), curve: Curves.fastOutSlowIn, child: const FlutterLogo(size: 75),
+ ),  ), );
+  }
+}
+
+
+Let us create two routes. On each route, there is a button. When we tap button on the first route, we are able to jump to the second route and if we tap button on the second route, we are able to jump to the first route.
+
+Class Routeone extends StatelessWidget {
+  const Routeone({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(‘Route One’),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text(‘Open route’),
+          onPressed: () {
+                  },
+        ),
+      ),
+    );
+  }
+}
+
+class Routetwo extends StatelessWidget {
+  const Routetwo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(‘Route Two’),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+                     },
+          child: const Text(‘Go back!’),
+        ),
+      ),
+    );
+  }
+}
+
+onPressed: () {
+  Navigator.pop(context);}
+
+Example:
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MaterialApp(
+    title: 'Navigation Basics',
+    home:Oneroute(),
+  ));
+}
+
+class Oneroute extends StatelessWidget {
+  const Oneroute({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Route One'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Open the route'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Tworoute()),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class Tworoute extends StatelessWidget {
+  const Tworoute({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Route Two'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Please return back..'),
+        ),
+      ),
+    );
+  }
+}
+
+The preceding code explains how we can perform navigation from one route to another in Flutter on pressing button.

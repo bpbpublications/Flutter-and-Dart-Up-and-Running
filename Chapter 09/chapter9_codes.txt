@@ -1,0 +1,124 @@
+The code to create a simple button using Container widget is as follows:
+class OkButton extends StatelessWidget {
+   OkButton({Key key}) : super(key: key); 
+   @override 
+   Widget build(BuildContext context) {
+      return Container(
+         decoration: const BoxDecoration(
+            border: Border(
+               top: BorderSide(width: 1.0, color: Color(0xFFFFFFFFFF)),
+               left: BorderSide(width: 1.0, color: Color(0xFFFFFFFFFF)),
+               right: BorderSide(width: 1.0, color: Color(0xFFFFF00000)),
+               bottom: BorderSide(width: 1.0, color: Color(0xFFFFF00000)),
+            ),
+         ),
+         child: Container(
+            padding: const
+            EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+            decoration: const BoxDecoration(
+               border: Border(
+                  top: BorderSide(width: 1.0, color: Color(0xFFFFDFDFDF)),
+                  left: BorderSide(width: 1.0, color: Color(0xFFFFDFDFDF)),
+                  right: BorderSide(width: 1.0, color: Color(0xFFFF7F7F7F)),
+                  bottom: BorderSide(width: 1.0, color: Color(0xFFFF7F7F7F)),
+               ),
+               color: Colors.grey,
+            ),
+            child: const Text(
+               'OK',textAlign: TextAlign.center, style: TextStyle(color: Colors.red)
+            ), 
+         ), 
+      ); 
+   }}
+
+The preceding code displays a container widget and a text widget and a submit button (OK Button) is displayed.
+
+
+
+Widgets are the basic building blocks of Flutter app. Widgets may comprise of layout elements such as padding, rows and so on. Consider the following code for creating a new Flutter project:
+    import 'package:flutter/material.dart';
+     void main() => runApp(MyApp());
+    class NewProject extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          home: Scaffold(
+            appBar: AppBar(
+              title: Text("Building New layout"),
+            ),
+            body: myLayoutWidget(),
+          ),
+        );
+      }
+    }
+      Widget myLayoutWidget() {
+      return Text("Welcome!");
+    }
+
+
+
+Consider the following code on Container:
+
+    Widget myProjectWidget() {
+      return Container(
+        margin: EdgeInsets.all(40.0),
+        padding: EdgeInsets.all(9.0),
+        alignment: Alignment.topRight,
+        width: 300,
+        height: 200,
+        decoration: BoxDecoration(
+          color: Colors.red,
+          border: Border.all(),
+        ),
+        child: Text("Welcome!", style: TextStyle(fontSize: 40)),
+      );
+    }
+
+Margin refers to spacing present outside the border.
+
+Rows and columns are also widgets. The widgets in rows are passed in children widget. Consider the following code that depicts the row widget:
+    Widget newProjectWidget() {
+      return Row(
+        children: [
+          Icon(Icons.home),
+          Icon(Icons.home),
+          Icon(Icons.home),
+          Icon(Icons.home),
+        ],
+      );
+    }
+
+In the preceding code, if we replace row with column, we get column widget.
+
+To make contents present in row and column evenly placed, we use Expanded widget.
+    Widget newProjectWidget() {
+      return Row(
+        children: [
+          Expanded(child: Icon(Icons.home)),
+          Expanded(child: Icon(Icons.home)),
+          Expanded(child: Icon(Icons.home)),
+          Expanded(child: Icon(Icons.home)),
+        ],
+      );
+    }
+
+
+    Widget myLayoutWidget() {
+      return Row(
+        children: [
+          Expanded(
+            flex: 6,
+            child: Container(
+              color: Colors.red,
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Container(
+              color: Colors.green,
+            ),
+          ),
+        ],
+      );
+    }
+

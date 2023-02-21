@@ -1,0 +1,52 @@
+FileManager(
+    controller: controller,
+    builder: (context, snapshot) {
+    final List<FileSystemEntity> entities = snapshot;
+      return ListView.builder(
+        itemCount: entities.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(leading: FileManager.isFile(entities[index])
+                  ? Icon(Icons.feed_outlined)
+                  : Icon(Icons.folder),
+              title: Text(FileManager.basename(entities[index])),
+              onTap: () {
+                if (FileManager.isDirectory(entities[index])) {
+                    controller.openDirectory(entities[index]);   // Opening a directory
+                  } else {
+                      // Perform tasks related  to file
+                  }
+              },
+            ),
+          );
+        },
+      );
+  },
+)
+
+
+Following dart code shows the use of setState() :
+class Sampletest extend StateTextList {
+  String letter = 'X';
+  void _onPressed() {
+    setState( () {
+      letter= 'Y';
+    });
+  }
+    
+  @override
+  Widget build (BuildContext xontext){
+    return Column(
+      children : <Widget> [
+        Icon();
+        Text('$letter),
+        FlatButton(
+         onPressed : _onPressed,
+        ),
+      ],
+    );
+  }
+}
+
+
+

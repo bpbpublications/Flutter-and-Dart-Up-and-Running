@@ -1,0 +1,172 @@
+Here is an example of how to open a database and create a table:
+import 'package:sqflite/sqflite.dart';
+
+// Open the database
+final database = openDatabase(
+  'my_database.db',
+  version: 1,
+  onCreate: (db, version) {
+    // Run the CREATE TABLE statement on the database
+    return db.execute(
+      'CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)',
+    );
+  },
+);
+
+Here is an example of how to insert a row into the users table:
+Copy code
+// Insert a row into the table
+await database.insert(
+  'users',
+  {'name': 'Alice', 'age': 25},
+  conflictAlgorithm: ConflictAlgorithm.replace,
+);
+
+This will insert a new row into the users table with the name Alice and age 25.
+
+
+Here is an example of how to initialize Firebase and use Cloud Firestore in a Flutter app:
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+Future<void> main() async {
+  // Initialize Firebase
+  await Firebase.initializeApp();
+
+  // Use Cloud Firestore
+  Firestore.instance.collection('users').add({
+    'name': 'Alice',
+    'age': 25,
+  });
+}
+
+
+
+Here is an example of how to use Cloud Firestore as a backend in a Flutter app:
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+Future<void> main() async {
+  // Initialize Firebase
+  await Firebase.initializeApp();
+
+  // Add a new document to the 'users' collection
+  Firestore.instance.collection('users').add({
+    'name': 'Alice',
+    'age': 25,
+  });
+
+  // Query the 'users' collection
+  QuerySnapshot snapshot = await Firestore.instance.collection('users').getDocuments();
+  snapshot.documents.forEach((doc) {
+   
+
+
+class UserAddition extends StatelessWidget {
+final String fullName;
+final String company;
+final int age;
+UserAddition(this.fullName, this.company, this.age);
+@override
+Widget build(BuildContext context) {
+CollectionReference users = FirebaseFirestore.instance.collection('users');
+Future<void> addUser() {
+return users
+.add({
+'full_name': fullName, // Robin
+'company': company, // Amazon
+'age': age // 42
+})
+.then((value) => print("Added User"))
+.catchError((error) => print("Failure: $error"));
+}
+return FlatButton(
+onPressed: addUser,
+child: Text(
+"Adding User",
+),
+);
+}
+}
+
+In order to delete the document, delete method is used.
+CollectionReference users = FirebaseFirestore.instance.collection('users');
+Future<void> deleteUser() {
+return users
+.doc('XYZ123')
+.delete()
+.then((value) => print("User Deleted Successfully"))
+.catchError((error) => print("Failure: $error"));
+}
+
+If we wish to remove specific property, then it is deleted as follows:
+CollectionReference users = FirebaseFirestore.instance.collection('users');
+Future<void> deleteField() {
+return users
+.doc('XYZ123')
+.update({'age': FieldValue.delete()})
+.then((value) => print("Property Deleted Successfully"))
+.catchError((error) => print("Failure!: $error"));
+}
+
+
+Here is an example of how to parse a JSON string into a Dart object using the jsonDecode function:
+import 'dart:convert';
+
+String jsonString = '{"name": "Alice", "age": 25}';
+
+Map<String, dynamic> data = jsonDecode(jsonString);
+
+print(data['name']); // Output: "Alice"
+print(data['age']); // Output: 25
+
+To generate a JSON string from a Dart object, you can use the jsonEncode function:
+Map<String, dynamic> data = {'name': 'Alice', 'age': 25};
+
+String jsonString = jsonEncode(data);
+
+print(jsonString); // Output: '{"name": "Alice", "age": 25}'
+
+To parse and generate XML data, you can use the xml package. Here is an example of how to parse an XML string using the parse function:
+import 'package:xml/xml.dart' as xml;
+String xmlString = '<users><user id="1"><name>Alice</name><age>25</age></user></users>';
+var document = xml.parse(xmlString);
+print(document.rootElement.children[0].getAttribute('id')); // Output: "1"
+print(document.rootElement.children[0].children[0].text); // Output: "Alice"
+print(document.rootElement.children[0].children[1].text); // Output: "25"
+
+To generate an XML string from a Dart object, you can use the build function:
+xml.XmlBuilder builder = xml.XmlBuilder();
+
+builder.element('users', nest: () {
+  builder.element('user', attributes: {'id': '1'}, nest: () {
+    builder.element('name', nest: 'Alice');
+    builder.element('age', nest: '25');
+  });
+});
+
+var xmlString = builder.build();
+
+print(xmlString); // Output: '<users><user id="1"><name>Alice</name><age>25</age></user></users>'
+
+To parse and generate HTML data, you can use the html package. Here is an example of how to parse an HTML string using the parse function:
+import 'package:html/parser.dart';
+
+String htmlString = '<div><h1>Hello World</h1><p>This is some text</p></div>';
+
+var document = parse(htmlString);
+print(document.firstChild.localName); // Output: "div"print(document.firstChild.firstChild.localName); // Output: "h1"print(document.firstChild.firstChild.text); // Output: "Hello World"print(document.firstChild.lastChild.localName); // Output: "p"print(document.firstChild.lastChild.text); // Output: "This is some text"
+
+To generate an HTML string from a Dart object, you can use the build function:
+import 'package:html/parser.dart';
+
+String htmlString = '<div><h1>Hello World</h1><p>This is some text</p></div>';
+
+var document = parse(htmlString);
+
+print(document.firstChild.localName); // Output: "div"
+print(document.firstChild.firstChild.localName); // Output: "h1"
+print(document.firstChild.firstChild.text); // Output: "Hello World"
+print(document.firstChild.lastChild.localName); // Output: "p"
+print(document.firstChild.lastChild.text); // Output: "This is some text"
+

@@ -1,0 +1,356 @@
+Example of Artithemetic Operator used in Dart Programming :
+
+
+void main()
+{
+    int p= 6;
+    int q = 5;
+ 
+    // Addition of p and q
+    var r = p+q;
+    print("Addition of p and q is $r");
+ 
+    // Subtracting p and q
+    var s = p - q;
+    print("The difference between p and q is $s");
+ 
+    // Using unary minus
+    var t = -s;
+    print("The negation of difference between p and q is $t");
+ 
+    // Multiplication of p and q
+    var u = p * q;
+    print("The product of p and q is $u");
+ 
+    // Floating point Division of p and q
+    var v = p /q;
+    print("The quotient of p and q is $v");
+ 
+    // Integer point Division of p and q
+    var w = p ~ / q;
+    print("The quotient of p and q is $w");
+ 
+    // Remainder of p and q
+    var x = p % q;
+    print("The remainder of p and q is $x");
+
+}
+
+Output: 
+Addition of p and q is 11
+The difference between p and q is 1
+The negation of difference between p and q is -1
+The product of p and q is 30
+The quotient of p and q is 1.2
+The quotient of p and q is 1
+The remainder of p and q is 1
+
+
+
+
+
+Consider the following Dart Program that makes use of relational operators:
+void main()
+{
+    int p= 6;
+    int q = 5;
+ 
+    // Greater between p and q
+    var r = p > q;
+    print("p is greater than q is $r");
+ 
+    // Smaller between p and q
+    var s = p < q;
+    print("p is smaller than q is $s");
+ 
+    // Greater than or equal to 
+    var t= p >= q;
+    print("p is greater than or equal to q is $t");
+ 
+    // Less than or equal to 
+    var u = p <= q;
+    print("p is smaller than or equal to q is $u");
+ 
+    // Equality between p and q
+    var v = p == q;
+    print("p and q are equal is $v");
+ 
+    // Unequality between p and q
+    var w = p != q;
+    print("p and q are not equal is $w");
+}
+Output:
+p is greater than q is true
+p is smaller than q is false
+p is greater than  or equal to q is true
+p is smaller than or equal to q is false
+p and q are equal is false
+p and q are not equal is false
+Consider the following Dart Program on Type Test Operator:
+void main()
+{
+    String p = 'Ryan';
+    double q = 2.7;
+ 
+    // Comparison using is
+    print(p is String);
+ 
+    // Comparison using is not
+    print(q is! int);
+}
+ Output:
+true
+true
+Consider the following Dart code that makes use of Bitwise Operator:
+void main()
+{
+    int p = 5;
+    int q = 7;
+ 
+    //  Bitwise AND on p and q
+    var r = p & q;
+    print(r);
+ 
+    // Performing Bitwise OR on p and q
+    var s = p | q;
+    print(s);
+ 
+    // Performing Bitwise XOR on p and q
+    var t = p ^ q;
+    print(t);
+ 
+    // Performing Bitwise NOT on p
+    var u= ~p;
+    print(u);
+ 
+    // Performing left shift on p
+    var v= a << b;
+    print(v);
+ 
+    // Performing right shift on a
+    var w = a >> b;
+    print(w);
+} 
+Output: 
+5
+7
+2
+4294967290
+640
+0 
+Consider the following Dart program depicting the use of Assignment Operator
+void main()
+{
+    int p = 4;
+    int q = 9;
+ 
+    // Assigning value to r
+    var r = p * q;
+    print(r);
+ 
+    // Assigning value to s
+    var s;
+    s ? ? = q - p; // Value is assigned as s is null
+    print(s);
+    // Again trying to assign value to s
+    s ? ? = p+q; // Value is not assigned to s as s is not null
+    print(s);
+}
+Output: 
+36
+5
+5
+Following Dart Program is used to depict the use of Logical Operators:
+void main()
+{
+    int p = 8;
+    int q = 13;
+ 
+    // And Operator
+    bool r = p > 10 && q < 15;
+    print(r);
+ 
+    // Using Or Operator
+    bool s = p > 10 || q < 15;
+    print(s);
+ 
+    // Using Not Operator
+    bool t = !(p > 10);
+    print(t);
+}
+Output:
+false
+true
+true
+Consider the following Dart Program depicting use of Conditional Operator:
+void main()
+{
+    int p = 9;
+    int q = 8;
+ 
+    // Conditional Statement
+    var r = (p < 10) ? "Correct" : "Wrong";
+    print(r);
+ 
+    // Conditional statement
+    int s;
+    var t = s ? ? "Null value";
+    print(t);
+ 
+    // After assigning value to n
+    s = 10;
+    t = s ? ? " Null value";
+    print(s);
+}
+Output:
+Correct
+Null value
+10
+
+
+Following Dart code is used to depict the function of Cascading Operator:
+class abc {
+    var p;
+    var q;
+ 
+    void set(x, y)
+    {
+        this.p = x;
+        this.q = y;
+    }
+ 
+    void add()
+    {
+        var r = this.p + this.q;
+        print(r);
+    }
+}
+ 
+void main()
+{
+    // Creating objects of class abc
+    abc o1 = new abc();
+    abc o2 = new abc();
+ 
+    // Without using Cascade Notation Operator
+    o1.set(3, 6);
+    o1.add();
+ 
+    // Using Cascade Notation Operator
+    o2..set(5, 6)..add();
+}
+Output:
+9
+11
+Consider the following code depicting the use of break:
+void main()
+{
+    int c= 1;
+  
+    while (c <= 10) {
+        print("The value is $count");
+        c++;
+  
+        if (c == 5) {
+            break;
+        }
+    }
+    print("You are out of while loop");
+}
+Output:
+The value is 1
+The value is 2
+The value is 3
+The value is 4
+
+
+Following Dart code shows use of continue statement:
+void main()
+{
+    int c = 0;
+  
+    while (c <= 10) {
+        c++;
+  
+        if (c== 5) {
+            print("Number 5 is skipped");
+            continue;
+        }
+  
+        print("Value=$count");
+    }
+  
+    print("You are out of while loop");
+}
+Output:
+Value=1
+Value=2
+Value=3
+Value=4
+Number 5 is skipped
+Value=6
+Value=7
+Value=8
+Value=9
+Value=10
+Value=11
+You are out of while loop
+Here, continue causes jump to the next iteration.
+
+void main()
+{
+    int value= 10;
+    if (value > 9) {
+        value++;
+        if (value < 10) {
+            print("It is true");
+        }
+        else {
+            print("It is false");
+        }
+    }
+} 
+Output:
+It is false
+Consider the following code in Dart that makes use of Switch statement:
+void main() { 
+   var grade = "B"; 
+   switch(grade) { 
+      case "A": {  print("Excellent"); } 
+      break; 
+     
+      case "B": {  print("Good"); } 
+      break; 
+　　 case "C": {  print("Fair"); } 
+      break; 
+      case "D": {  print("Poor"); } 
+      break; 
+     default: {  print("Invalid choice"); } 
+      break; 
+}
+}
+output: Good
+
+
+Consider following Dart code that depicts use of while loop:
+void main() { 
+   var num = 4 
+   var factorial = 1; 
+   
+   while(num >=1) { 
+      factorial = factorial * num; 
+      num--; 
+   } 
+   print("The factorial  is ${factorial}"); }
+
+Output: 24
+
+Consider the following dart code that depicts the use of do while loop:
+void main() { 
+   var n = 5; 
+   do { 
+      print(n); 
+      n--; 
+   }
+   while(n>=0); }  
+Output: 5 4 3 2 1
